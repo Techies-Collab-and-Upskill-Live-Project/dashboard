@@ -1,28 +1,25 @@
 import { Route, Routes } from "react-router";
-import Dashboard from "./Layouts/DashboardLayouts";
 import DashboardLayout from "./Layouts/DashboardLayouts";
-// import Dashboard from "./Admin/Dashboard";
-// import TopBar from "./Admin/TopBar";
-// import Interns from "./Content/Interns/Interns";
-// import DashboardLayout from "./layout/DashboardLayout";
-// import SideMenu from "./layout/SideMenu";
+import Interns from "./components/Interns/Interns";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Applications from "./components/Applications/Application";
+import Projects from "./components/Projects/Projects";
+import Messages from "./components/Message/Message";
 
 const App = () => {
   return (
     <div className="bg-[#181818]">
+    
       <Routes>
-        <Route path="/dashboard" element={<DashboardLayout />} />
-      </Routes>
-      {/* <Routes>
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="interns" element={<Interns />} />
-          <Route path="Applications" element={<Interns />} />
-          <Route path="New Projects Upload" element={<Interns />} />
-          <Route path="Messages" element={<Interns />} />
+          <Route path="applications" element={<Applications />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="messages" element={<Messages />} />
         </Route>
-        <Dashboard />
-      </Routes> */}
+        {/* <Dashboard /> */}
+      </Routes>
     </div>
   );
 };

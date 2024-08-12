@@ -1,41 +1,34 @@
-import {
-    MdDashboard,
-    MdLogout,
-    MdMessage,
-    MdPeople,
-    MdSettingsApplications,
-    MdUpload,
-  } from "react-icons/md";
+
+import intern from "../../assets/Vector (8).png";
+import projects from "../../assets/Vector (7).png";
+import application from "../../assets/Icons (2).png"
+
+import message from "../../assets/Group.png"
 
 export const NavData = [
-//   {
-//     icon: <MdDashboard />,
-//     text: "Dashboard",
-//     to: "dashboard",
-//   },
+  //   {
+  //     icon: <MdDashboard />,
+  //     text: "Dashboard",
+  //     to: "dashboard",
+  //   },
   {
-    icon: <MdPeople />,
+    icon: intern,
     text: "Interns",
     to: "interns",
   },
   {
-    icon: <MdPeople />,
-    text: "Intes",
-    to: "intes",
+    icon: application,
+    text: "Applications",
+    to: "applications",
   },
-//   {
-//     icon: <MdSettingsApplications />,
-//     text: "Applications",
-//     to: "applications",
-//   },
-//   {
-//     icon: <MdUpload />,
-//     text: "New Projects Upload",
-//     to: "new_projects",
-//   },
   {
-    icon: <MdMessage />,
+    icon: projects,
+    text: "New Project Upload",
+    to: "projects",
+  },
+  {
+    icon: message,
     text: "Messages",
-    to: "message",
+    to: "messages",
   },
 ];

@@ -3,6 +3,7 @@ import logo from "../../assets/logo V 4.png";
 import { MdDashboard, MdLogout } from "react-icons/md";
 import { useState } from "react";
 import { NavData } from "./Data";
+import Dashboard from "../../assets/Vector (4).png";
 
 const SideBar = ({ openMenu, closeMenu }) => {
   const path = useLocation().pathname;
@@ -20,7 +21,7 @@ const SideBar = ({ openMenu, closeMenu }) => {
         openMenu ? "w-fit z-[9999]" : "w-0 z-0 overflow-hidden transition-all"
       }`}
     >
-      <div className="pt-[25px] border">
+      <div className="pt-[25px]">
         <div className="hidden lg:flex px-[8px] gap-2">
           <img
             src={logo}
@@ -32,79 +33,77 @@ const SideBar = ({ openMenu, closeMenu }) => {
 
         <nav className="pt-[20px] lg:pt-0">
           <div className="flex pt-[15px] flex-col items-center font-[500] text-[#fff]">
-            <div className="flex flex-col">
-              {/* DASHBOARD */}
-              <div className="w-full flex flex-col self-start">
+            {/* DASHBOARD */}
+            <div className="w-full flex flex-col self-start">
+              <NavLink
+                to="/dashboard"
+                onClick={() => handleClick()}
+                className={
+                  ({ isActive }) =>
+                    isActive
+                      ? `${
+                          path === "/dashboard" && "bg-[#13BA00]"
+                        } flex item-center justify-center py-[10px] rounded-md gap-x-[8px] px-[10px]`
+                      : " flex item-center py-[10px] rounded-md"
+                }
+              >
+                <img src={Dashboard} className="w-4 h-4" alt="Dashboard" />
+                <span
+                  className={`overflow-hidden transition-all max-lg:hidden ${
+                    expanded
+                      ? "w-[200px] leading-[14.4px] tracking-[-0.24px] text-[12px] font-[500]"
+                      : "hidden"
+                  }`}
+                >
+                  Dashboard
+                </span>
+              </NavLink>
+            </div>
+
+            <div className="w-full flex flex-col self-start">
+              {NavData.map((item, id) => (
                 <NavLink
-                  to="/dashboard"
+                  key={id}
+                  to={item.to}
                   onClick={() => handleClick()}
                   className={({ isActive }) =>
                     isActive
-                      ? `${
-                          path === "/dashboard" && "bg-[#13BA00] rounded-md"
-                        } flex items-center gap-x-[8px] p-[10px]`
-                      : " flex items-center gap-x-[8px] p-[10px]"
+                      ? " bg-[#13BA00] rounded-md flex items-center gap-x-[8px] px-[10px] py-[10px]"
+                      : " flex items-center justify-center gap-x-[8px] p-[10px]"
                   }
                 >
-                  <MdDashboard />
-                  <span className={`max-lg:hidden transition-all overflow-hidden  ${expanded ? "text-[12px] font-[500] leading-[14.4px] tracking-[-0.24px]" : "hidden"}`}>
-                    Dashboard
+                <img src={item.icon} className="w-4 h-4"  alt="" />
+                  <span
+                    className={`overflow-hidden transition-all max-lg:hidden ${
+                      expanded
+                        ? "w-[200px] leading-[14.4px] tracking-[-0.24px] text-[12px] font-[500]"
+                        : "hidden"
+                    }`}
+                  >
+                    {item.text}
                   </span>
                 </NavLink>
-              </div>
-
-              <div>
-                {NavData.map((item, id) => (
-                  <NavLink
-                    key={id}
-                    to={item.to}
-                    onClick={() => handleClick()}
-                    className={({ isActive }) =>
-                      isActive
-                        ? " bg-[#13BA00] rounded-md flex items-center gap-x-[8px] p-[10px]"
-                        : " flex items-center gap-x-[8px] p-[10px]"
-                    }
-                  >
-                    {item.icon}
-                    {/* <span className={`max-lg:hidden overflow-hidden transition-all ${closeMenu ? "text-[12px] font-[500] leading-[14.4px] tracking-[-0.24px] pr-[70px] py-2" : "hidden"}`}> */}
-                    {/* <span className={`max-lg:hidden overflow-hidden transition-all ${!closeMenu ? "hidden" : "text-[12px] font-[500] leading-[14.4px] tracking-[-0.24px] pr-[70px] py-2"}`}>
-                    {item.text}
-                  </span> */}
-                    <span
-                      className={`overflow-hidden transition-all max-lg:hidden ${
-                        expanded
-                          ? "w-52 ml-3 leading-[14.4px] tracking-[-0.24px] text-[12px] font-[500]"
-                          : "w-0"
-                      }`}
-                    >
-                      {item.text}
-                    </span>
-                  </NavLink>
-                ))}
-              </div>
+              ))}
             </div>
 
             {/* LOGOUT */}
             <div className="w-full text-red-800 flex flex-col self-start">
               <NavLink
                 to="#"
-                className="flex items-center gap-x-[8px] p-[10px]"
+                className="flex items-center gap-x-[8px] px-[10px] py-[15px]"
               >
                 <MdLogout />
                 <span
                   onClick={() => setExpanded((prev) => !prev)}
                   className={`overflow-hidden transition-all max-lg:hidden ${
                     expanded
-                      ? "w-52 ml-3 leading-[14.4px] tracking-[-0.24px] text-[12px] font-[500]"
-                      : "w-0"
+                      ? "leading-[14.4px] tracking-[-0.24px] text-[12px] font-[500]"
+                      : "hidden"
                   }`}
                 >
                   Logout
                 </span>
               </NavLink>
-              <button>
-                {/* <img src={avatar} className="w-[24px] h-[24px] rounded-full"/> */}
-              </button>
             </div>
           </div>
         </nav>
